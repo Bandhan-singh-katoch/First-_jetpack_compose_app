@@ -3,7 +3,9 @@ package com.example.first_jetpack_compose_app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -19,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
                     MyApp{
-                        Greeting(name = "Android")
+                        MyScreenContent()
                     }
         }
     }
@@ -41,10 +43,19 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!",modifier = Modifier.padding(22.dp))
 }
 
-@Preview("Text preview")
+@Composable
+fun MyScreenContent(){
+    Column{
+        Greeting(name = "Android")
+        Divider(color = Color.Black)
+        Greeting(name = "There")
+    }
+}
+
+@Preview("MyScreenContent preview")
 @Composable
 fun DefaultPreview() {
     MyApp{
-        Greeting(name = "Android")
+        MyScreenContent()
     }
 }
